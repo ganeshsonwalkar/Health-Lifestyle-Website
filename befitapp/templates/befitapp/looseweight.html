@@ -1,0 +1,558 @@
+{% load static %}
+<html>
+  <head>
+    <title>BeFit | Looseweight</title>
+    <link rel="stylesheet" href="{% static 'befitapp/mycss.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Concert+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marvel&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>  
+
+    <script type="text/javascript">
+
+      function bmeal() {  
+        {% for a in breakf %}
+
+        var y = parseInt(document.getElementById("myVar1").value);        
+        var imgurl = document.getElementById("f2{{a.id}}").value;
+        var title = document.getElementById("f3{{a.id}}").value;
+        var cal = parseInt(document.getElementById("f4{{a.id}}").value);
+        var carb = document.getElementById("f5{{a.id}}").value;
+        var pro = document.getElementById("f6{{a.id}}").value;
+        var ytb = document.getElementById("f7{{a.id}}").value;
+        {% endfor%}
+        let str1 = "&nbsp&nbsp&nbspCalories : ";
+        let str2 = "&nbsp&nbsp&nbspCarbs : ";
+        let str3 = "&nbsp&nbsp&nbspProtien : ";
+        if (cal<=y) {
+          document.getElementById("btitle").innerHTML = title;
+          document.getElementById("bimg").src = imgurl;
+          document.getElementById("bcal").innerHTML = str1.concat(cal);
+          document.getElementById("bcarb").innerHTML = str2.concat(carb);
+          document.getElementById("bpro").innerHTML = str3.concat(pro);
+          document.getElementById("bwat").href = ytb;
+          document.getElementById("bvar1").value = title;
+          document.getElementById("bvar2").value = imgurl;
+          document.getElementById("bvar3").value = cal;
+          document.getElementById("bvar4").value = carb;
+          document.getElementById("bvar5").value = pro;
+          document.getElementById("bvar6").value = ytb;
+        }
+ 
+      }
+      function lmeal() {
+        {% for a in lunch %}
+        var y = parseInt(document.getElementById("myVar2").value);
+        var imgurl = document.getElementById("a2{{a.id}}").value;
+        var title = document.getElementById("a3{{a.id}}").value;
+        var cal = parseInt(document.getElementById("a4{{a.id}}").value);
+        var carb = document.getElementById("a5{{a.id}}").value;
+        var pro = document.getElementById("a6{{a.id}}").value;
+        var ytb = document.getElementById("a7{{a.id}}").value;
+        {% endfor %}
+        let str1 = "&nbsp&nbsp&nbspCalories : ";
+        let str2 = "&nbsp&nbsp&nbspCarbs : ";
+        let str3 = "&nbsp&nbsp&nbspProtien : ";
+
+        if (cal<=y) {
+          document.getElementById("ltitle").innerHTML = title;
+          document.getElementById("limg").src = imgurl;
+          document.getElementById("lcal").innerHTML = str1.concat(cal);
+          document.getElementById("lcarb").innerHTML = str2.concat(carb);
+          document.getElementById("lpro").innerHTML = str3.concat(pro);
+          document.getElementById("lwat").href = ytb;
+          document.getElementById("lvar1").value = title;
+          document.getElementById("lvar2").value = imgurl;
+          document.getElementById("lvar3").value = cal;
+          document.getElementById("lvar4").value = carb;
+          document.getElementById("lvar5").value = pro;
+          document.getElementById("lvar6").value = ytb;
+        }
+
+      }
+      function emeal() {
+        {% for a in even %}
+        var y = parseInt(document.getElementById("myVar3").value);
+        var imgurl = document.getElementById("b2{{a.id}}").value;
+        var title = document.getElementById("b3{{a.id}}").value;
+        var cal = document.getElementById("b4{{a.id}}").value;
+        var carb = document.getElementById("b5{{a.id}}").value;
+        var pro = document.getElementById("b6{{a.id}}").value;
+        {% endfor %} 
+        let str1 = "&nbsp&nbsp&nbspCalories : ";
+        let str2 = "&nbsp&nbsp&nbspCarbs : ";
+        let str3 = "&nbsp&nbsp&nbspProtien : ";
+          if (cal<=y) {
+          document.getElementById("etitle").innerHTML = title;
+          document.getElementById("eimg").src = imgurl;
+          document.getElementById("ecal").innerHTML = str1.concat(cal);
+          document.getElementById("ecarb").innerHTML = str2.concat(carb);
+          document.getElementById("epro").innerHTML =str3.concat(pro);
+          document.getElementById("evar1").value = title;
+          document.getElementById("evar2").value = imgurl;
+          document.getElementById("evar3").value = cal;
+          document.getElementById("evar4").value = carb;
+          document.getElementById("evar5").value = pro;
+        }
+
+      }
+      function dmeal() {
+              
+        {% for a in dinner %}
+        var y = parseInt(document.getElementById("myVar4").value);
+        var imgurl = document.getElementById("c2{{a.id}}").value;
+        var title = document.getElementById("c3{{a.id}}").value;
+        var cal = parseInt(document.getElementById("c4{{a.id}}").value);
+        var carb = document.getElementById("c5{{a.id}}").value;
+        var pro = document.getElementById("c6{{a.id}}").value;
+        var ytb = document.getElementById("c7{{a.id}}").value;
+        {% endfor %}
+        let str1 = "&nbsp&nbsp&nbspCalories : ";
+        let str2 = "&nbsp&nbsp&nbspCarbs : ";
+        let str3 = "&nbsp&nbsp&nbspProtien : ";
+        if (cal<=y) {
+          document.getElementById("dtitle").innerHTML = title;
+          document.getElementById("dimg").src = imgurl;
+          document.getElementById("dcal").innerHTML = str1.concat(cal);
+          document.getElementById("dcarb").innerHTML = str2.concat(carb);
+          document.getElementById("dpro").innerHTML = str3.concat(pro);
+          document.getElementById("dwat").href = ytb;
+          document.getElementById("dvar1").value = title;
+          document.getElementById("dvar2").value = imgurl;
+          document.getElementById("dvar3").value = cal;
+          document.getElementById("dvar4").value = carb;
+          document.getElementById("dvar5").value= pro;
+          document.getElementById("dvar6").value = ytb;
+        }
+
+      }
+      window.onload = function () {
+        bmeal();
+        lmeal();
+        emeal();
+        dmeal();
+      };
+    </script>
+  </head>
+
+  <body>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	{% for msg in messages %}
+    <script>
+      Swal.fire("{{ msg }}");
+    </script>
+    {% endfor %}
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="http://127.0.0.1:8000/">
+          <img class="img1" src="https://i.ibb.co/wyFWhRM/logo.png" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Gainweight"
+              >GAIN WEIGHT</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Looseweight"
+              >LOOSE WEIGHT</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Fitness%20Calculators"
+              >FITNESS CALCULATORS</a
+            >
+
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Nutrition%20Table"
+              >NUTRITION FACTS</a
+            >
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle nav-link-text fs-5"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                EXERCISES
+              </a>
+
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Yoga"
+                    ><font class="items">YOGA </font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Cardio"
+                    ><font class="items">CARDIO</font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/HIIT"
+                    ><font class="items">HIIT</font></a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="http://127.0.0.1:8000/Heavy%20Weight%20Training"
+                    ><font class="items">WEIGHT TRAINING</font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Aerobics"
+                    ><font class="items">AEROBICS</font></a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {% if user.is_authenticated %}
+          <ul class="navbar-nav ms-auto">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/profile"
+              >Hello, {{user.username}}</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Logout"
+              >Logout</a
+            >
+          </ul>
+          {% else %}
+          <ul class="navbar-nav ms-auto">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Login%7CRegister"
+              >LOGIN | REGISTER</a
+            >
+          </ul>
+          {%endif%}
+        </div>
+      </div>
+    </nav>    
+    {% for x in breakf1 %}
+    <input type="hidden" id="f2{{x.id}}" name="variable" value="{{x.imgurl}}" />
+    <input type="hidden" id="f3{{x.id}}" name="variable" value="{{x.title}}" />
+    <input type="hidden" id="f4{{x.id}}" name="variable" value="{{x.cal}}" />   
+    <input type="hidden" id="f5{{x.id}}" name="variable" value="{{x.carb}}" />
+    <input type="hidden" id="f6{{x.id}}" name="variable" value="{{x.protien}}" />
+    <input type="hidden" id="f7{{x.id}}" name="variable" value="{{x.ytb}}" />
+    {% endfor %} 
+    {% if first %}
+    <input type="hidden" id="myVar1" name="variable" value="{{ first }}" />
+    {% endif %}
+    {% for x in lunch1 %}
+    <input type="hidden" id="a2{{x.id}}" name="variable" value="{{x.imgurl}}" />
+    <input type="hidden" id="a3{{x.id}}" name="variable" value="{{x.title}}" />
+    <input type="hidden" id="a4{{x.id}}" name="variable" value="{{x.cal}}" />   
+    <input type="hidden" id="a5{{x.id}}" name="variable" value="{{x.carb}}" />
+    <input type="hidden" id="a6{{x.id}}" name="variable" value="{{x.protien}}" />
+    <input type="hidden" id="a7{{x.id}}" name="variable" value="{{x.ytb}}" />
+    {% endfor %}  
+    {% if second%}
+    <input type="hidden" id="myVar2" name="variable" value="{{ second }}" />
+    {% endif %}    
+    {% for x in even1 %}
+    <input type="hidden" id="b2{{x.id}}" name="variable" value="{{x.imgurl}}" />
+    <input type="hidden" id="b3{{x.id}}" name="variable" value="{{x.title}}" />
+    <input type="hidden" id="b4{{x.id}}" name="variable" value="{{x.cal}}" />   
+    <input type="hidden" id="b5{{x.id}}" name="variable" value="{{x.carb}}" />
+    <input type="hidden" id="b6{{x.id}}" name="variable" value="{{x.protien}}" />
+    {% endfor %} 
+    {% if third %}
+    <input type="hidden" id="myVar3" name="variable" value="{{ third }}" />
+    {% endif %}  
+    {% for x in dinner1 %}
+    <input type="hidden" id="c2{{x.id}}" name="variable" value="{{x.imgurl}}" />
+    <input type="hidden" id="c3{{x.id}}" name="variable" value="{{x.title}}" />
+    <input type="hidden" id="c4{{x.id}}" name="variable" value="{{x.cal}}" />   
+    <input type="hidden" id="c5{{x.id}}" name="variable" value="{{x.carb}}" />
+    <input type="hidden" id="c6{{x.id}}" name="variable" value="{{x.protien}}" />
+    <input type="hidden" id="c7{{x.id}}" name="variable" value="{{x.ytb}}" />
+    {% endfor %}    
+    {% if fourth %}
+    <input type="hidden" id="myVar4" name="variable" value="{{ fourth }}" />
+    {% endif %}
+    <div class="spacing-low"></div>
+    <div class="banner2">
+      <h4 class="h4wt" style="padding-left:10%">LOOSE WEIGHT</h4><br>
+      <p class="para2">
+      Avoiding heart disease and looking ‘fab’ aren’t always great reasons to lose weight
+      You may want to lose weight for personal reasons. Or you may need to lose weight to 
+      improve your health. It can reduce your risk of certain conditions, such heart 
+      disease and type 2 diabetes. It can lower your blood pressure and total cholesterol 
+      level. It also can relieve symptoms and prevent injuries related to being overweight.
+      There are several factors that can affect your efforts to lose weight. 
+      These include making changes to your diet, exercise, and lifestyle.
+      We will be helping you with diet and exercise and other tools to help you with fitness and health journey. 
+      </p>
+      <div class="spacing-high"></div>
+      <div class="spacing-high"></div>
+    </div>
+    <div class="spacing-low"></div>
+    <div class="calbg">
+      <div
+        class="
+          w-100
+          fs-2
+          d-flex
+          flex-column
+          align-items-center
+          justify-content-center
+        "
+      >
+        <h4><font class="heading1">CALORIE CALCULATOR</font></h4>
+
+        <p class="fs-5 ps-5 para">
+          The Calorie Calculator can be used to estimate the number of calories
+          a person needs to consume each day. This calculator can also provide
+          some simple guidelines for gaining or losing weight.
+        </p>
+        <div class="logspace"></div>
+      </div>
+    <div class="fieldset">
+      <center>            
+        <form action="http://127.0.0.1:8000/Calo2" method="POST">
+        {% csrf_token %}
+        <fieldset>
+          <table class="tab">
+            <tr>
+              <td align="right">
+                <label>Age:</label>
+              </td>
+              <td>
+                <input type="text" id="age" name="age" />
+              </td>
+            </tr>
+            <tr>
+              <td align="right">
+                <label for="gender">Gender:</label>
+              </td>
+              <td>
+                <input type="radio" id="female" name="gender" value="female" />
+                <label>Female </label>
+                <input type="radio" id="male" name="gender" value="male" />
+                <label>Male </label>
+              </td>
+            </tr>
+            <tr>
+              <td align="right">
+                <label for="fname">Height:</label>
+              </td>
+              <td>
+                <input type="text" id="ht" name="ht" />
+                <span> in cm</span>
+              </td>
+            </tr>
+            <tr>
+              <td align="right">
+                <label for="fname">Weight:</label>
+              </td>
+              <td>
+                <input type="text" id="wt" name="wt" />
+                <span> in kg</span>
+              </td>
+            </tr>
+                        <tr>
+              <td align="right">
+                <label for="gender">Activity Level:</label>
+              </td>
+              <td>
+                <input
+                  type="radio"
+                  name="act"
+                  value="none"
+                />
+                <label>None</label><br />
+                <input
+                  type="radio"
+                  name="act"
+                  value="light"
+                />
+                <label>Light(1-2 days a week)</label><br>
+                <input
+                  type="radio"
+                  name="act"
+                  value="mod"
+                />
+                <label>Moderate(3-5 days a week)</label><br>
+                <input
+                  type="radio"
+                  name="act"
+                  value="very"
+                />
+                <label>Very Active(7 days a week)</label>
+              </td>
+            </tr>
+          </table>
+          <button type="submit" class="hbuttons3">Calculate</button>
+        </fieldset>
+        </form>
+      </center>
+    </div>
+    </div>
+    <div class="spacing-low"></div>
+    <div class="fieldset33">
+      <fieldset>
+        <h4 class="h4wt1" style="float: left;width:50%">LOOSE WEIGHT</h4>
+        <form action="http://127.0.0.1:8000/Recommendedmeals" method="POST">
+        {% csrf_token %}
+        <button class="hbuttonsgl" value="loose" name="rec">Recommended Meals</button>
+        </form>
+        <br />
+        <br />
+        <hr style="border: 1px solid rgb(32, 32, 32)" />
+        <div class="logspace"></div>
+        <fieldset class="mealsf">
+          <div class="mealpad"><br>     <br> 
+          <h4 class="h4wt1" >Breakfast</h4>
+          <h4 class="h4wt1" id="btitle" ></h4>
+          <br>
+          <span id="bcal"></span><br>
+          <span id="bcarb"></span><br>
+          <span id="bpro"></span><br>
+
+          <a id="bwat" style="text-decoration:none;" href="">&nbsp&nbsp&nbspClick here for the recipe.</a><br><br> 
+          <form action="http://127.0.0.1:8000/Baddmeal" method="POST">
+          {% csrf_token %}
+          <input type="hidden" id="bvar1" name="bv1" value="" />
+          <input type="hidden" id="bvar2" name="bv2" value="" />
+          <input type="hidden" id="bvar3" name="bv3" value="" />
+          <input type="hidden" id="bvar4" name="bv4" value="" />
+          <input type="hidden" id="bvar5" name="bv5" value="" />
+          <input type="hidden" id="bvar6" name="bv6" value="" />  
+          <button style="float: left"   type="submit" name="bbtn" class="addb2" value="loose">
+              + add meal to your routine.
+            </button>
+            
+            </form>
+          </div> 
+                    <img id="bimg" class="mealimg" src=""/> 
+        </fieldset>
+         <br>     <br>  
+
+        <fieldset class="mealsf">
+          <div class="mealpad"><br>     <br> 
+          <h4 class="h4wt1" >Lunch</h4>
+          <h4 class="h4wt1" id="ltitle" ></h4>
+          <br>
+          <span id="lcal"></span><br>
+          <span id="lcarb"></span><br>
+          <span id="lpro"></span><br>
+
+          <a id="lwat" style="text-decoration:none;" href="">&nbsp&nbsp&nbspClick here for the recipe.</a><br><br> 
+          <form action="http://127.0.0.1:8000/Laddmeal" method="POST">
+          {% csrf_token %}
+          <input type="hidden" id="lvar1" name="lv1" value="" />
+          <input type="hidden" id="lvar2" name="lv2" value="" />
+          <input type="hidden" id="lvar3" name="lv3" value="" />
+          <input type="hidden" id="lvar4" name="lv4" value="" />
+          <input type="hidden" id="lvar5" name="lv5" value="" />
+          <input type="hidden" id="lvar6" name="lv6" value="" />  
+          <button style="float: left"  type="submit" name="lbtn" class="addb2" value="loose">
+              + add meal to your routine.
+            </button>
+          </form>  
+          </div> 
+        <img id="limg" class="mealimg" src=""/> 
+        </fieldset>
+          <br>     <br>  
+        <fieldset class="mealsf">
+          <div class="mealpad"><br>     <br> 
+          <h4 class="h4wt1" >Evening Snack</h4>
+          <h4 class="h4wt1" id="etitle" ></h4>
+          <br>
+          <span id="ecal"></span><br>
+          <span id="ecarb"></span><br>
+          <span id="epro"></span><br>
+          <br>           
+          <form action="http://127.0.0.1:8000/Eaddmeal" method="POST">
+          {% csrf_token %}
+          <input type="hidden" id="evar1" name="ev1" value="" />
+          <input type="hidden" id="evar2" name="ev2" value="" />
+          <input type="hidden" id="evar3" name="ev3" value="" />
+          <input type="hidden" id="evar4" name="ev4" value="" />
+          <input type="hidden" id="evar5" name="ev5" value="" />  
+          <button style="float: left"type="submit" name="ebtn" class="addb2" value="loose">
+              + add meal to your routine.
+            </button></form>
+          </div> 
+                    <img id="eimg" class="mealimg" src=""/> 
+        </fieldset>
+           <br><br>  
+        <fieldset class="mealsf">
+          <div class="mealpad"><br>     <br> 
+          <h4 class="h4wt1" >Dinner</h4>
+          <h4 class="h4wt1" id="dtitle" ></h4>
+          <br>
+          <span id="dcal"></span><br>
+          <span id="dcarb"></span><br>
+          <span id="dpro"></span><br>
+
+          <a id="dwat" style="text-decoration:none;" href="">&nbsp&nbsp&nbspClick here for the recipe.</a><br><br> 
+          <form action="http://127.0.0.1:8000/Daddmeal" method="POST">
+          {% csrf_token %}
+          <input type="hidden" id="dvar1" name="dv1" value="" />
+          <input type="hidden" id="dvar2" name="dv2" value="" />
+          <input type="hidden" id="dvar3" name="dv3" value="" />
+          <input type="hidden" id="dvar4" name="dv4" value="" />
+          <input type="hidden" id="dvar5" name="dv5" value="" />
+          <input type="hidden" id="dvar6" name="dv6" value="" />          
+          <button style="float: left" type="submit" name="dbtn" class="addb2" value="loose">
+              + add meal to your routine.
+            </button>
+            </form>
+          </div> 
+                    <img id="dimg" class="mealimg" src=""/> 
+        </fieldset> 
+        <br>     <br>  
+        <div class="logspace">
+
+      </fieldset>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+{% load static %}
+<html>
+  <head>
+    <title>BeFit | Article</title>
+    <link rel="stylesheet" href="{% static 'befitapp/mycss.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Concert+One&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      function myFunction() {
+        {% for a in articled %}
+        var x = document.getElementById("f1{{a.id}}").value;
+        var y = document.getElementById("myVar5").value;
+        var imgurl = document.getElementById("f2{{a.id}}").value;
+        var title = document.getElementById("f3{{a.id}}").value;
+        var body = document.getElementById("f4{{a.id}}").value;
+
+        if (x == y) {
+          document.getElementById("title").innerHTML = title;
+          document.getElementById("img").src = imgurl;
+          document.getElementById("p").innerHTML = body;
+        }{% endfor %}
+      }
+
+      window.onload = function () {
+        myFunction();
+      };
+    </script>
+  </head>
+
+  <body class="bdy">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="http://127.0.0.1:8000/">
+          <img class="img1" src="https://i.ibb.co/wyFWhRM/logo.png" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Gainweight"
+              >GAIN WEIGHT</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Looseweight"
+              >LOOSE WEIGHT</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Fitness%20Calculators"
+              >FITNESS CALCULATORS</a
+            >
+
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Nutrition%20Table"
+              >NUTRITION FACTS</a
+            >
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle nav-link-text fs-5"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                EXERCISES
+              </a>
+
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Yoga"
+                    ><font class="items">YOGA </font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Cardio"
+                    ><font class="items">CARDIO</font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/HIIT"
+                    ><font class="items">HIIT</font></a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="http://127.0.0.1:8000/Heavy%20Weight%20Training"
+                    ><font class="items">WEIGHT TRAINING</font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Aerobics"
+                    ><font class="items">AEROBICS</font></a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {% if user.is_authenticated %}
+          <ul class="navbar-nav ms-auto">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/profile"
+              >Hello, {{user.username}}</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Logout"
+              >Logout</a
+            >
+          </ul>
+          {% else %}
+          <ul class="navbar-nav ms-auto">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Login%7CRegister"
+              >LOGIN | REGISTER</a
+            >
+          </ul>
+          {%endif%}
+        </div>
+      </div>
+    </nav>
+    {% for x in articled %}
+    <input type="hidden" id="f1{{x.id}}" name="variable" value="{{x.id}}" />
+    <input type="hidden" id="f2{{x.id}}" name="variable" value="{{x.imgurl}}" />
+    <input type="hidden" id="f3{{x.id}}" name="variable" value="{{x.title}}" />
+    <input type="hidden" id="f4{{x.id}}" name="variable" value="{{x.body}}" />
+    {% endfor %} {% for y in messages %}
+    <input type="hidden" id="myVar5" name="variable" value="{{ y }}" />
+    {% endfor %}
+    <div class="spacing-low"></div>
+    <fieldset class="fieldsetart">
+      <div class="leftpad">
+        <h3 id="title" style="color: #6e6d6d"></h3>
+        <br />
+        <div class="logspace"></div>
+
+        <img id="img" class="artimg2" src="" />
+        <br /><br />
+        <br /><br />
+        <p id="p" class="arttext1"></p>
+      </div>
+      <div class="spacing-low"></div>
+    </fieldset>
+    <br /><br />
+  </body>
+</html>

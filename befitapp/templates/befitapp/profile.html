@@ -1,0 +1,256 @@
+{% load static %}
+<html>
+  <head>
+    <title>BeFit | Profile</title>
+    <link rel="stylesheet" href="{% static 'befitapp/mycss.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Concert+One&display=swap"
+      rel="stylesheet"
+    /><link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+
+  <body>
+    {% for msg in messages %}
+    <script>
+      Swal.fire("{{ msg }}");
+    </script>
+    {% endfor %}
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="http://127.0.0.1:8000/">
+          <img class="img1" src="https://i.ibb.co/wyFWhRM/logo.png" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Gainweight"
+              >GAIN WEIGHT</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Looseweight"
+              >LOOSE WEIGHT</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Fitness%20Calculators"
+              >FITNESS CALCULATORS</a
+            >
+
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Nutrition%20Table"
+              >NUTRITION FACTS</a
+            >
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle nav-link-text fs-5"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                EXERCISES
+              </a>
+
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Yoga"
+                    ><font class="items">YOGA </font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Cardio"
+                    ><font class="items">CARDIO</font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/HIIT"
+                    ><font class="items">HIIT</font></a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="http://127.0.0.1:8000/Heavy%20Weight%20Training"
+                    ><font class="items">WEIGHT TRAINING</font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Aerobics"
+                    ><font class="items">AEROBICS</font></a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {% if user.is_authenticated %}
+          <ul class="navbar-nav ms-auto">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/profile"
+              >Hello, {{user.username}}</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Logout"
+              >Logout</a
+            >
+          </ul>
+          {% else %}
+          <ul class="navbar-nav ms-auto">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Login%7CRegister"
+              >LOGIN | REGISTER</a
+            >
+          </ul>
+          {%endif%}
+        </div>
+      </div>
+    </nav>
+    <div class="spacing-low"></div>
+    <div class="logspace"></div>
+    <div class="logspace"></div>
+    <div class="move">
+      {%if prinf%}
+      <h3 class="h4wt2" style="color: #7a7777">{{prinf.profile}}</h3>
+      <hr style="border: 0.5px solid #7a7777" /><br />
+      <div class="prtxt">
+      <label>Age : </label>
+      <span> {{prinf.age}}</span><br />
+      <label>Gender : </label>
+      <span> {{prinf.gender}}</span><br />
+      <label>Height : </label>
+      <span> {{prinf.height}} cm</span><br />
+      <label>Weight : </label>
+      <span> {{prinf.weight}} kg</span><br />
+      <label>BodyFat : </label>     
+      {%if bdf1 %}   
+      <span> {{bdf1.num}} </span><br />
+      {%endif%}
+      <label>Body Mass Index : </label>
+      {%if bbmi %}
+      <span> {{bbmi.num}}</span><br />
+      {%endif%}
+      <label>Daily Calorie Intake Goal : </label>
+      <span> {{prinf.cal}} kcal</span><br />
+      <label>Metabolism Rate : </label>
+      <span> {{prinf.meta}}</span><br />
+      {%endif%}
+      <br /><br /><br />
+      {%if prob %}
+    </div>
+      <h3 class="h4wt2" style="color: #7a7777">Meals</h3>
+      <hr style="border: 0.5px solid #7a7777" />
+      <fieldset>
+        <div class="logspace"></div>
+        <fieldset class="mealsf">
+          <div class="mealpad"><br>     <br> 
+          <h4 class="h4wt1" >Breakfast</h4>
+          <h4 class="h4wt1" id="btitle" >{{prob.title}}</h4>
+          <br>
+          <span id="bcal">&nbsp&nbsp&nbspCalories : {{prob.cal}}</span><br>
+          <span id="bcarb">&nbsp&nbsp&nbspCarbs : {{prob.carb}}</span><br>
+          <span id="bpro">&nbsp&nbsp&nbspProtien : {{prob.protien}}</span><br>
+
+          <a id="bwat" style="text-decoration:none;" href="{{prob.ytb}}">&nbsp&nbsp&nbspClick here for the recipe.</a><br>
+          </div> 
+                    <img id="bimg" class="mealimg" src="{{prob.imgurl}}"/> 
+        </fieldset>
+         <br>     <br>  
+            {%endif%}      
+            {%if prol %}
+        <fieldset class="mealsf">
+          <div class="mealpad"><br>     <br> 
+          <h4 class="h4wt1" >Lunch</h4>
+          <h4 class="h4wt1" id="ltitle" >{{prol.title}}</h4>
+          <br>
+          <span id="lcal">&nbsp&nbsp&nbspCalories : {{prol.cal}}</span><br>
+          <span id="lcarb">&nbsp&nbsp&nbspCarbs : {{prol.carb}}</span><br>
+          <span id="lpro">&nbsp&nbsp&nbspProtien : {{prol.protien}}</span><br>
+
+          <a id="lwat" style="text-decoration:none;" href="{{prob.ytb}}">&nbsp&nbsp&nbspClick here for the recipe.</a><br>
+          </div> 
+         <img id="limg" class="mealimg" src="{{prol.imgurl}}"/> 
+        </fieldset>{%endif%} 
+          <br>     <br>  {%if proe %}
+        <fieldset class="mealsf">
+          <div class="mealpad"><br>     <br> 
+          <h4 class="h4wt1" >Evening Snack</h4>
+          <h4 class="h4wt1" id="etitle" >{{proe.title}}</h4>
+          <br>
+          <span id="ecal">&nbsp&nbsp&nbspCalories : {{proe.cal}}</span><br>
+          <span id="ecarb">&nbsp&nbsp&nbspCarbs : {{proe.carb}}</span><br>
+          <span id="epro">&nbsp&nbsp&nbspProtien : {{proe.protien}}<</span><br>
+          </div> 
+        <img id="eimg" class="mealimg" src="{{proe.imgurl}}"/> 
+        </fieldset>{%endif%} 
+           <br><br>  {%if prod %}
+        <fieldset class="mealsf">
+          <div class="mealpad"><br>     <br> 
+          <h4 class="h4wt1" >Dinner</h4>
+          <h4 class="h4wt1" id="dtitle" >{{prod.title}}</h4>
+          <br>
+          <span id="dcal">&nbsp&nbsp&nbspCalories : {{prod.cal}}</span><br>
+          <span id="dcarb">&nbsp&nbsp&nbspCarbs : {{prod.carb}}</span><br>
+          <span id="dpro">&nbsp&nbsp&nbspProtien : {{prod.protien}}</span><br>
+          <a id="dwat" style="text-decoration:none;" href="{{prod.ytb}}">&nbsp&nbsp&nbspClick here for the recipe.</a><br>       
+          </div> 
+        <img id="dimg" class="mealimg" src="{{prod.imgurl}}"/> 
+        </fieldset> {%endif%} 
+        <br>     <br>  
+        <div class="logspace">
+
+      </fieldset>
+
+
+            <br /><br /><br />
+
+      <h3 class="h4wt2" style="color: #7a7777">Exercises</h3>
+      <hr style="border: 0.5px solid #7a7777" /><br />      
+      {%for x in pexer %}
+        <div class="vid">
+          <iframe
+            width="100%"
+            height="60%"      
+            src="{{x.link}}" 
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>        
+        </div><br><br>{%endfor%}
+        <div class="spacing-low">
+    </div>
+  </body>
+</html>

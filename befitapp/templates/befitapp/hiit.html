@@ -1,0 +1,195 @@
+{% load static %}
+<html>
+  <head>
+    <title>BeFit | Hiit</title>
+    <link rel="stylesheet" href="{% static 'befitapp/mycss.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Concert+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marvel&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% for msg in messages %}
+    <script>
+      Swal.fire("{{ msg }}");
+    </script>
+    {% endfor %}
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="http://127.0.0.1:8000/">
+          <img class="img1" src="https://i.ibb.co/wyFWhRM/logo.png" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Gainweight"
+              >GAIN WEIGHT</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Looseweight"
+              >LOOSE WEIGHT</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Fitness%20Calculators"
+              >FITNESS CALCULATORS</a
+            >
+
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Nutrition%20Table"
+              >NUTRITION FACTS</a
+            >
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle nav-link-text fs-5"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                EXERCISES
+              </a>
+
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Yoga"
+                    ><font class="items">YOGA </font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Cardio"
+                    ><font class="items">CARDIO</font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/HIIT"
+                    ><font class="items">HIIT</font></a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="http://127.0.0.1:8000/Heavy%20Weight%20Training"
+                    ><font class="items">WEIGHT TRAINING</font></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="http://127.0.0.1:8000/Aerobics"
+                    ><font class="items">AEROBICS</font></a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {% if user.is_authenticated %}
+          <ul class="navbar-nav ms-auto">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/profile"
+              >Hello, {{user.username}}</a
+            >
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Logout"
+              >Logout</a
+            >
+          </ul>
+          {% else %}
+          <ul class="navbar-nav ms-auto">
+            <a
+              class="nav-link fs-5 nav-link-text"
+              href="http://127.0.0.1:8000/Login%7CRegister"
+              >LOGIN | REGISTER</a
+            >
+          </ul>
+          {%endif%}
+        </div>
+      </div>
+    </nav>
+    <div
+      class="
+        w-100
+        h-25
+        fs-2
+        d-flex
+        flex-column
+        align-items-center
+        justify-content-center
+      "
+      style="margin-top: 100px"
+    >
+      <h4><font class="heading1">HIIT</font></h4>
+
+      <p class="fs-5 ps-5 para">
+        High-intensity interval training is a form of interval training, a
+        cardiovascular exercise strategy alternating short periods of intense
+        anaerobic exercise with less intense recovery periods, until too
+        exhausted to continue
+      </p>
+    </div>
+    <ul style="list-style-type: none">
+      {% for x in exer %} {% ifequal x.type "HIIT" %}
+      <li>
+        <div class="vid">
+          <iframe
+            width="100%"
+            height="60%"
+            src="{{x.link}}"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <form action="http://127.0.0.1:8000/Add" method="POST">
+            {% csrf_token %}
+            <button name="addtop" type="submit" class="addb" value="{{x.link}}">
+              + ADD TO YOUR PLAYLIST
+            </button>
+          </form>
+        </div>
+        <br /><br />
+      </li>
+      {% endifequal %} {% endfor %}
+    </ul>
+  </body>
+</html>
